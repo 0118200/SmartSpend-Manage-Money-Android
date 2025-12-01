@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="240dp"
+    android:height="240dp"
+    android:viewportWidth="200"
+    android:viewportHeight="200">
+
+    <!-- Pusat (100,100), Jari-jari 100 -->
+
+    <!-- Sektor 1: Pink (45%) -->
+    <path
+        android:fillColor="#F48FB1"
+        android:pathData="M100,100 L158.78,180.9 A100,100 0 0,1 19.1,41.22 L100,100 Z"/>
+
+    <!-- Sektor 2: Biru (25%) -->
+    <path
+        android:fillColor="#81D4FA"
+        android:pathData="M100,100 L180.9,41.22 A100,100 0 0,1 158.78,180.9 L100,100 Z"/>
+
+    <!-- Sektor 3: Hijau (15%) -->
+    <path
+        android:fillColor="#B9F6CA"
+        android:pathData="M100,100 L100,0 A100,100 0 0,1 180.9,41.22 L100,100 Z"/>
+
+    <!-- Sektor 4: Kuning (10%) -->
+    <path
+        android:fillColor="#FFF59D"
+        android:pathData="M100,100 L41.22,19.1 A100,100 0 0,1 100,0 L100,100 Z"/>
+
+    <!-- Sektor 5: Merah (5%) -->
+    <path
+        android:fillColor="#FF8A80"
+        android:pathData="M100,100 L19.1,41.22 A100,100 0 0,1 41.22,19.1 L100,100 Z"/>
+
+    <!-- Lubang Tengah (Warna Background) -->
+    <path
+        android:fillColor="#FFFBF8"
+        android:pathData="M100,100 m-50,0 a50,50 0 1,1 100,0 a50,50 0 1,1 -100,0"/>
+</vector>

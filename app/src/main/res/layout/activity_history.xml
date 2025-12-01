@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_cream">
+
+    <!-- 1. HEADER (FIXED) -->
+    <RelativeLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="5dp"
+        android:background="@color/bg_cream"
+        android:elevation="4dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+
+            <!-- Logo -->
+            <FrameLayout
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="-10dp">
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/logo"
+                    android:scaleType="centerCrop"
+                    android:layout_gravity="left" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Riwayat Pengeluaran"
+                android:textStyle="bold"
+                android:textColor="@color/text_orange"
+                android:textSize="17sp"
+                android:layout_marginTop="-5dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@android:drawable/ic_popup_reminder"
+                app:tint="#FDD835"
+                android:layout_marginEnd="15dp"/>
+
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_profile"
+                app:tint="@color/text_grey"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <!-- 2. SCROLL CONTENT -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="30dp">
+
+            <!-- FILTER BULAN & TAHUN -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Bulan : "
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="5dp"/>
+
+                <Spinner
+                    android:layout_width="98dp"
+                    android:layout_height="25dp"
+                    android:entries="@array/list_bulan"
+                    android:background="@drawable/bg_white_border"
+                    android:backgroundTint="@color/daily_item_header"
+                    android:layout_marginEnd="20dp"
+                    android:minWidth="100dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tahun : "
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginEnd="5dp"/>
+
+                <Spinner
+                    android:layout_width="98dp"
+                    android:layout_height="25dp"
+                    android:entries="@array/list_tahun"
+                    android:background="@drawable/bg_white_border"
+                    android:backgroundTint="@color/daily_item_header"
+                    android:minWidth="80dp"/>
+            </LinearLayout>
+
+            <!-- TOTAL PENGELUARAN (KOTAK PINK) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_history_total"
+                android:paddingVertical="10dp"
+                android:paddingHorizontal="20dp"
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:text="Total Pengeluaran"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=": Rp. 1.615.000"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+            </LinearLayout>
+
+            <!-- TOMBOL RINCIAN (HIJAU) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rincian"
+                android:background="@drawable/bg_history_button"
+                android:paddingHorizontal="40dp"
+                android:paddingVertical="5dp"
+                android:textStyle="bold"
+                android:textColor="#2E7D32"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="25dp"/>
+
+            <!-- === LIST TANGGAL 1 OKTOBER === -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <!-- Header Tanggal -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_calendar_item"
+                        android:layout_marginEnd="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1 Oktober 2025"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+                <!-- Item 1: Makanan -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_makanan" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_food"/>
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Makanan" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Oseng cumi\nEs Teler\nAyam Malay" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="end">
+                        <TextView android:text="Rp.16.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Rp.10.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Rp.12.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Item 2: Transportasi -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_transport" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_transport" />
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Transportasi" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Gojek" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Rp. 5.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <!-- Item 3: Belanja -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_belanja" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_shopping" />
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Belanja" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Tisu" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Rp. 7.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- === LIST TANGGAL 2 OKTOBER === -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <!-- Header Tanggal -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp">
+                    <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@drawable/ic_calendar_item" android:layout_marginEnd="10dp"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 Oktober 2025" android:textStyle="bold" android:textColor="@color/black"/>
+                </LinearLayout>
+
+                <!-- Item 1: Makanan -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_makanan" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_food"/>
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Makanan" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Oseng ceker\nHot Lava" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="end">
+                        <TextView android:text="Rp.13.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Rp.12.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Item 2: Transport -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_transport" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_transport"/>
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Transportasi" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Bus Semanggi" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Rp. 2.500" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <!-- Item 3: Belanja -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_belanja" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_shopping"/>
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Belanja" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Kapas" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Rp. 8.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <!-- Item 4: Hiburan -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_hiburan" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_movie"/>
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Hiburan" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Nonton" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Rp.20.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- === LIST TANGGAL 3 OKTOBER === -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp">
+
+                <!-- Header Tanggal -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="10dp">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_calendar_item"
+                        android:layout_marginEnd="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="3 Oktober 2025"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"/>
+                </LinearLayout>
+
+                <!-- Item 1: Makanan (Kebab, Batagor) -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_makanan" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_food" app:tint="@color/icon_makanan_dark"/>
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Makanan" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Kebab\nBatagor" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="end">
+                        <TextView android:text="Rp. 15.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Rp. 10.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Item 2: Transportasi (Bensin) -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginBottom="10dp">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_transport" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_transport" app:tint="@color/icon_transport_dark"/>
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Transportasi" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Bensin" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Rp. 20.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <!-- Item 3: Belanja -->
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                    <androidx.cardview.widget.CardView android:layout_width="24dp" android:layout_height="24dp" app:cardCornerRadius="12dp" app:cardBackgroundColor="@color/icon_belanja" app:cardElevation="0dp" android:layout_marginStart="34dp" android:layout_marginEnd="10dp">
+                        <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="5dp" android:src="@drawable/ic_cat_shopping" app:tint="@color/icon_belanja_dark"/>
+                    </androidx.cardview.widget.CardView>
+                    <LinearLayout android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:orientation="vertical">
+                        <TextView android:text="Belanja" android:textStyle="bold" android:textSize="12sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                        <TextView android:text="Air Mineral" android:textSize="11sp" android:textColor="@color/text_grey" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    </LinearLayout>
+                    <TextView android:text="Rp. 5.000" android:fontFamily="monospace" android:textSize="11sp" android:textColor="@color/black" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <Space android:layout_width="match_parent" android:layout_height="100dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 3. NAVIGATION BAR (FIXED) -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/nav_bottom_bg"
+        android:orientation="horizontal"
+        android:paddingVertical="10dp"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Home -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_nav_home"
+                app:tint="@color/nav_inactive"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="10sp"
+                android:textColor="@color/nav_inactive"/>
+        </LinearLayout>
+
+        <!-- Daily Budget -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_nav_list"
+                app:tint="@color/nav_inactive"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daily Budget"
+                android:textSize="10sp"
+                android:textColor="@color/nav_inactive"/>
+        </LinearLayout>
+
+        <!-- Graphic -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_nav_chart"
+                app:tint="@color/nav_inactive"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Graphic"
+                android:textSize="10sp"
+                android:textColor="@color/nav_inactive"/>
+        </LinearLayout>
+
+        <!-- History (AKTIF) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_nav_history"
+                app:tint="@color/nav_active"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="History"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/nav_active"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Warna Dasar -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="bg_cream">#FFFBF8</color>
+    <color name="text_orange">#FFAB91</color>
+    <color name="text_grey">#616161</color>
+    <color name="nav_bottom_bg">#FACEE0</color>
+    <color name="nav_active">#880E4F</color>
+    <color name="nav_inactive">#6A4F5B</color>
+
+    <!-- Warna Dropdown -->
+    <color name="pink_dropdown_bg">#F06292</color>
+    <!-- WARNA KHUSUS HALAMAN GRAFIK (YANG HILANG) -->
+    <color name="pink_title_box">#F89BA9</color>      <!-- Judul Presentase -->
+    <color name="green_soft_box">#6DFF88</color>      <!-- Pengeluaran Terkecil -->
+    <color name="red_soft_box">#FF4649</color>        <!-- Pengeluaran Terbesar -->
+    <!-- Warna Chart -->
+    <color name="chart_pink">#F48FB1</color>
+    <color name="chart_blue">#81D4FA</color>
+    <color name="chart_green">#B9F6CA</color>
+    <color name="chart_yellow">#FFF59D</color>
+    <color name="chart_red">#FF8A80</color>
+
+    <!-- WARNA BARU HALAMAN RIWAYAT -->
+    <color name="history_total_bg">#FFD4D4</color>   <!-- Pink Total Pengeluaran -->
+    <color name="history_btn_bg">#D3FFC5</color>     <!-- Hijau Tombol Rincian -->
+    <color name="green_calendar">#00C853</color>     <!-- Warna Ikon Kalender -->
+
+    <!-- Warna Kategori -->
+    <color name="icon_makanan">#F48FB1</color>
+    <color name="icon_transport">#B9F6CA</color>
+    <color name="icon_belanja">#81D4FA</color>
+    <color name="icon_hiburan">#E6EE9C</color>
+    <color name="daily_item_header">#FCE4EC</color>
+
+    <!-- Lainnya -->
+    <color name="warna_saldo_utama">#F091B2</color>
+    <color name="warna_tombol">#C881A6</color>
+    <color name="warna_dana_darurat">#FFE4E4</color>
+    <color name="warna_header">#E0DDE2</color>
+    <!-- WARNA IKON KATEGORI (LEBIH GELAP/KONTRAS) - BARU! -->
+    <color name="icon_makanan_dark">#C2185B</color> <!-- Pink Tua -->
+    <color name="icon_transport_dark">#388E3C</color> <!-- Hijau Tua -->
+    <color name="icon_belanja_dark">#1976D2</color> <!-- Biru Tua -->
+    <color name="icon_hiburan_dark">#AFB42B</color> <!-- Lime Tua -->
+
+    <!-- Warna Input Pemasukan (BARU) -->
+    <color name="input_header_bg">#F8BBD0</color>    <!-- Pink Header Atas -->
+    <color name="input_box_bg">#FFD5D5</color>       <!-- Pink Kotak Judul "INPUT PEMASUKAN" -->
+    <color name="btn_save_green">#8EF9A0</color>     <!-- Hijau Tombol Simpan -->
+    <color name="btn_save_text">#1B5E20</color>      <!-- Hijau Tua Teks Simpan -->
+
+    <!-- WARNA BARU INPUT PENGELUARAN -->
+    <color name="bg_scan_pink">#FCE5E5</color>      <!-- Pink Pucat (Label Scan) -->
+    <color name="bg_save_green">#8EF9A0</color>     <!-- Hijau (Tombol Simpan) -->
+    <color name="bg_title_pink">#FFD5D5</color>     <!-- Pink (Judul Input) -->
+    <color name="bg_dropdown_pink">#FCE4EC</color>  <!-- Pink (Dropdown Kategori) -->
+    <color name="text_green_dark">#1B5E20</color>   <!-- Warna Teks di Tombol Simpan -->
+
+    <!-- WARNA BARU HALAMAN NOTIFIKASI -->
+    <color name="notif_bg_cream">#F7F0DC</color>    <!-- Background Sub-Header -->
+    <color name="notif_border_gold">#E9DA84</color> <!-- Warna Garis & Teks Judul -->
+    <color name="notif_icon_yellow">#FBC02D</color> <!-- Warna Ikon Lonceng -->
+
+</resources>

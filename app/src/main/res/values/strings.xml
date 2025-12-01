@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Smart Spend</string>
+
+    <!-- Tambahkan "Bulan" di urutan pertama -->
+    <string-array name="list_bulan">
+        <item>Bulan</item>  <!-- Ini akan jadi default -->
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
+        <item>Juni</item>
+        <item>Juli</item>
+        <item>Agustus</item>
+        <item>September</item>
+        <item>Oktober</item>
+        <item>November</item>
+        <item>Desember</item>
+    </string-array>
+
+    <!-- Tambahkan "Tahun" di urutan pertama -->
+    <string-array name="list_tahun">
+        <item>Tahun</item> <!-- Ini akan jadi default -->
+        <item>2025</item>
+        <item>2026</item>
+        <item>2027</item>
+        <item>2028</item>
+        <item>2029</item>
+        <item>2030</item>
+    </string-array>
+
+    <!-- KATEGORI PENGELUARAN (BARU) -->
+    <string-array name="list_kategori">
+        <item>Kategori</item> <!-- Default -->
+        <item>Makanan</item>
+        <item>Transportasi</item>
+        <item>Belanja</item>
+        <item>Hiburan</item>
+    </string-array>
+</resources>

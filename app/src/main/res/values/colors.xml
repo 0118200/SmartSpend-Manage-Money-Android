@@ -64,4 +64,10 @@
     <color name="notif_border_gold">#E9DA84</color> <!-- Warna Garis & Teks Judul -->
     <color name="notif_icon_yellow">#FBC02D</color> <!-- Warna Ikon Lonceng -->
 
+    <!-- Warna untuk Daily Budget Item -->
+    <color name="border_grey">#E0E0E0</color>
+    <color name="btn_cross_red">#F44336</color>
+    <color name="btn_check_green">#4CAF50</color>
+
+
 </resources>

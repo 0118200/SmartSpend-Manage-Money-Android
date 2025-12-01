@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/main"
     android:background="@color/bg_cream">
 
     <!-- 1. HEADER KHUSUS (PINK) -->
@@ -16,19 +17,23 @@
         android:paddingHorizontal="20dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Tombol Kembali & Teks Home -->
+        <!-- Gunakan hanya SATU ImageView untuk tombol kembali -->
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
+            <!-- GANTI: gunakan ID yang sama di sini, jangan buat baru -->
             <ImageView
+                android:id="@+id/btn_back"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:src="@drawable/ic_arrow_back"
                 app:tint="@color/black"
-                android:layout_marginEnd="10dp"/>
+                android:layout_marginEnd="10dp"
+                android:clickable="true"
+                android:focusable="true"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -78,12 +83,13 @@
             android:layout_marginBottom="40dp"/>
 
         <!-- Formulir Input (TableLayout agar Rapi) -->
+        <!-- Formulir Input -->
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:stretchColumns="2">
 
-            <!-- Baris 1: Jumlah -->
+            <!-- Baris 1: Jumlah Pemasukan -->
             <TableRow android:layout_marginBottom="20dp">
                 <ImageView
                     android:layout_width="12dp"
@@ -91,7 +97,7 @@
                     android:src="@drawable/shape_circle_grey"
                     android:layout_gravity="center_vertical"
                     android:layout_marginEnd="10dp"
-                    app:tint="@color/text_grey"/> <!-- Buat drawable bulat kecil atau pakai icon -->
+                    app:tint="@color/text_grey"/>
 
                 <TextView
                     android:text="Jumlah Pemasukan"
@@ -100,12 +106,15 @@
                     android:textSize="14sp"
                     android:layout_marginEnd="10dp"/>
 
-                <TextView
-                    android:text=": Rp.1.700.000"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="monospace"
-                    android:textSize="14sp"/>
+                <EditText
+                    android:id="@+id/edit_jumlah_pemasukan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rp. 0"
+                    android:inputType="numberDecimal"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_input_title"
+                    android:padding="8dp"/>
             </TableRow>
 
             <!-- Baris 2: Dana Darurat -->
@@ -125,15 +134,18 @@
                     android:textSize="14sp"
                     android:layout_marginEnd="10dp"/>
 
-                <TextView
-                    android:text=": Rp.200.000"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="monospace"
-                    android:textSize="14sp"/>
+                <EditText
+                    android:id="@+id/edit_dana_darurat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rp. 0"
+                    android:inputType="numberDecimal"
+                    android:textSize="14sp"
+                    android:background="@drawable/bg_input_title"
+                    android:padding="8dp"/>
             </TableRow>
 
-            <!-- Baris 3: Tanggal -->
+            <!-- Baris 3: Tanggal Input -->
             <TableRow android:layout_marginBottom="20dp">
                 <ImageView
                     android:layout_width="12dp"
@@ -151,10 +163,16 @@
                     android:layout_marginEnd="10dp"/>
 
                 <TextView
-                    android:text=": 1 Oktober 2025"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"/>
+                    android:id="@+id/tv_tanggal_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Pilih Tanggal"
+                    android:textSize="14sp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"/>
             </TableRow>
         </TableLayout>
 
@@ -166,6 +184,7 @@
 
         <!-- Tombol Simpan -->
         <TextView
+            android:id="@+id/btn_simpan_pemasukan"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Simpan Pemasukan"
@@ -175,7 +194,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/btn_save_text"
-            android:layout_marginBottom="30dp"/>
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            android:focusable="true"/>
 
     </LinearLayout>
 

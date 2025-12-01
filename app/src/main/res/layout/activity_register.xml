@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFD6E0"
+    android:padding="30dp"
+    android:gravity="center_horizontal">
+
+    <!-- Judul -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BUAT AKUN BARU"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#C2185B"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Input Email -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email/username"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_marginTop="10dp" />
+
+    <EditText
+        android:id="@+id/inputEmail"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_white"
+        android:hint="Masukkan email/username"
+        android:padding="12dp"
+        android:textSize="14sp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Input Password -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kata Sandi"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_marginTop="15dp" />
+
+    <EditText
+        android:id="@+id/inputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_white"
+        android:hint="Masukkan kata sandi"
+        android:padding="12dp"
+        android:textSize="14sp"
+        android:inputType="textPassword"
+        android:layout_marginTop="8dp" />
+
+    <!-- Konfirmasi Password -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Konfirmasi Kata Sandi"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_marginTop="15dp" />
+
+    <EditText
+        android:id="@+id/inputConfirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@drawable/rounded_white"
+        android:hint="Ulangi kata sandi"
+        android:padding="12dp"
+        android:textSize="14sp"
+        android:inputType="textPassword"
+        android:layout_marginTop="8dp" />
+
+    <!-- Tombol Daftar -->
+    <LinearLayout
+        android:id="@+id/btnRegister"
+        android:layout_width="200dp"
+        android:layout_height="45dp"
+        android:orientation="horizontal"
+        android:background="@drawable/rounded_button"
+        android:gravity="center"
+        android:layout_marginTop="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="DAFTAR"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Kembali ke Login -->
+    <TextView
+        android:id="@+id/txtBackToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sudah punya akun? Masuk disini"
+        android:textColor="#C2185B"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp" />
+
+</LinearLayout>

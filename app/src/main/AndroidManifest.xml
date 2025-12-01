@@ -10,40 +10,52 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyApplication">
+        android:theme="@style/Theme.MyApplication"
+        tools:targetApi="31">
+
+        <!-- ✅ HALAMAN LOGIN (launcher) -->
         <activity
-            android:name=".profileActivity"
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- ✅ HALAMAN UTAMA SETELAH LOGIN -->
+        <activity
+            android:name=".homepageActivity"
             android:exported="false" />
+
+        <!-- ✅ HALAMAN LAIN DARI BOTTOM NAVIGATION -->
         <activity
-            android:name=".notifikasiActivity"
-            android:exported="false" />
-        <activity
-            android:name=".pengeluaranActivity"
-            android:exported="false" />
-        <activity
-            android:name=".pemasukanActivity"
-            android:exported="false" />
-        <activity
-            android:name=".historyActivity"
+            android:name=".budgetingActivity"
             android:exported="false" />
         <activity
             android:name=".grafikActivity"
             android:exported="false" />
         <activity
-            android:name=".budgetingActivity"
+            android:name=".historyActivity"
             android:exported="false" />
-        <activity
-            android:name=".homepageActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <!-- ✅ HALAMAN TAMBAHAN (jika ada) -->
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pemasukanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".pengeluaranActivity"
+            android:exported="false" />
+        <activity
+            android:name=".notifikasiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".profileActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

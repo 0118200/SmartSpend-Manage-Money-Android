@@ -1,149 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F9A9D4"
+    android:id="@+id/main"
+    android:gravity="center"
     android:padding="30dp"
-    android:gravity="center_horizontal">
+    android:background="#E3F2FD">
 
-    <!-- Logo aplikasi -->
-    <ImageView
-        android:id="@+id/appLogo"
-        android:layout_width="296dp"
-        android:layout_height="132dp"
-        android:layout_marginTop="20dp"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/logo" />
-
-    <!-- Label Email -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Email/username"
-        android:textSize="16sp"
-        android:textColor="#000"
-        android:layout_marginTop="15dp" />
-
-    <!-- Input Email -->
-    <EditText
-        android:id="@+id/inputEmail"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/rounded_white"
-        android:hint="Masukkan email/username"
-        android:padding="12dp"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp" />
-
-    <!-- Label Password -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Kata Sandi"
-        android:textSize="16sp"
-        android:textColor="#000"
-        android:layout_marginTop="10dp" />
-
-    <!-- Input Password -->
-    <EditText
-        android:id="@+id/inputPassword"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:background="@drawable/rounded_white"
-        android:hint="Masukkan kata sandi"
-        android:padding="12dp"
-        android:textSize="14sp"
-        android:inputType="textPassword"
-        android:layout_marginTop="8dp" />
-
-    <!-- Lupa Sandi -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lupa Sandi?"
-        android:textSize="12sp"
-        android:textColor="#4A3AFF"
-        android:layout_gravity="end"
-        android:layout_marginTop="4dp" />
-
-    <!-- ✨ SPACE untuk mendorong tombol ke bawah -->
-    <Space
-        android:layout_width="364dp"
-        android:layout_height="53dp"
-        android:layout_weight="0" />
-
-    <!-- Tombol Login -->
-    <LinearLayout
-        android:id="@+id/btnLogin"
-        android:layout_width="200dp"
-        android:layout_height="45dp"
-        android:orientation="horizontal"
-        android:background="@drawable/rounded_button"
-        android:gravity="center"
-        android:layout_marginTop="15dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="LOGIN"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <!-- Atau -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Atau"
-        android:textSize="14sp"
-        android:textColor="#000"
-        android:layout_marginTop="15dp" />
-
-    <!-- Tombol Google -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:orientation="horizontal"
-        android:background="@drawable/rounded_button"
-        android:gravity="center"
-        android:paddingStart="20dp"
-        android:layout_marginTop="8dp">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/google"
-            android:contentDescription="Google Logo" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="  MASUK DENGAN GOOGLE"
-            android:textStyle="bold"
-            android:textColor="#000"
-            android:textSize="14sp" />
-    </LinearLayout>
-
-    <!-- Daftar -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Belum memiliki akun?"
-        android:textSize="13sp"
-        android:textColor="#000"
-        android:layout_marginTop="30dp" />
-
-    <TextView
-        android:id="@+id/txtDaftar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Daftar Disini"
-        android:textColor="#4A3AFF"
-        android:textSize="14sp"
+        android:text="SELAMAT DATANG!"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:layout_marginTop="2dp" />
+        android:textColor="#1976D2" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Anda berhasil login."
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:textColor="#555" />
 
 </LinearLayout>

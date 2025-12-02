@@ -83,104 +83,111 @@
             android:layout_height="wrap_content"
             android:stretchColumns="2">
 
-            <!-- Baris 1: Jumlah -->
-            <TableRow android:layout_marginBottom="20dp">
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/shape_circle_grey"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="10dp"
-                    app:tint="@color/text_grey"/>
-                <TextView
-                    android:text="Jumlah Pengeluaran"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:layout_marginEnd="10dp"/>
-                <TextView
-                    android:text=": Rp.16.000"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="monospace"
-                    android:textSize="13sp"/>
-            </TableRow>
+        <!-- Baris 1: Jumlah Pengeluaran -->
+        <TableRow android:layout_marginBottom="20dp">
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/shape_circle_grey"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                app:tint="@color/text_grey"/>
+            <TextView
+                android:text="Jumlah Pengeluaran"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:layout_marginEnd="10dp"/>
+            <EditText
+                android:id="@+id/edit_jumlah_pengeluaran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rp. 0"
+                android:inputType="numberDecimal"
+                android:textSize="13sp"
+                android:background="@drawable/bg_input_title"
+                android:padding="6dp"/>
+        </TableRow>
 
-            <!-- Baris 2: Deskripsi -->
-            <TableRow android:layout_marginBottom="20dp">
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/shape_circle_grey"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="10dp"
-                    app:tint="@color/text_grey"/>
-                <TextView
-                    android:text="Deskripsi"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:layout_marginEnd="10dp"/>
-                <TextView
-                    android:text=": Oseng Cumi"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:fontFamily="serif"
-                    android:textSize="13sp"/>
-            </TableRow>
+        <!-- Baris 2: Deskripsi -->
+        <TableRow android:layout_marginBottom="20dp">
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/shape_circle_grey"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                app:tint="@color/text_grey"/>
+            <TextView
+                android:text="Deskripsi"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:layout_marginEnd="10dp"/>
+            <EditText
+                android:id="@+id/edit_deskripsi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contoh: Makan siang"
+                android:textSize="13sp"
+                android:background="@drawable/bg_input_title"
+                android:padding="6dp"/>
+        </TableRow>
 
-            <!-- Baris 3: Kategori (Dropdown) -->
-            <TableRow android:layout_marginBottom="20dp" android:gravity="center_vertical">
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/shape_circle_grey"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="10dp"
-                    app:tint="@color/text_grey"/>
-                <TextView
-                    android:text="Kategori"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:layout_marginEnd="10dp"/>
+        <!-- Baris 3: Kategori -->
+        <TableRow android:layout_marginBottom="20dp">
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/shape_circle_grey"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                app:tint="@color/text_grey"/>
+            <TextView
+                android:text="Kategori"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:layout_marginEnd="10dp"/>
+            <Spinner
+                android:id="@+id/spinner_kategori"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:entries="@array/list_kategori"
+                android:background="@drawable/bg_white_border"
+                android:backgroundTint="@color/bg_dropdown_pink"/>
+        </TableRow>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-                    <!-- Dropdown Kategori -->
-                    <Spinner
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:entries="@array/list_kategori"
-                        android:background="@drawable/bg_white_border"
-                        android:backgroundTint="@color/bg_dropdown_pink"
-                        android:minWidth="100dp"/>
-                </LinearLayout>
-            </TableRow>
-
-            <!-- Baris 4: Tanggal -->
-            <TableRow android:layout_marginBottom="30dp">
-                <ImageView
-                    android:layout_width="12dp"
-                    android:layout_height="12dp"
-                    android:src="@drawable/shape_circle_grey"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginEnd="10dp"
-                    app:tint="@color/text_grey"/>
-                <TextView
-                    android:text="Tanggal Pengeluaran"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"
-                    android:layout_marginEnd="10dp"/>
-                <TextView
-                    android:text=": 1 Oktober 2025"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="13sp"/>
-            </TableRow>
+        <!-- Baris 4: Tanggal -->
+        <TableRow android:layout_marginBottom="30dp">
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/shape_circle_grey"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                app:tint="@color/text_grey"/>
+            <TextView
+                android:text="Tanggal Pengeluaran"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:layout_marginEnd="10dp"/>
+            <TextView
+                android:id="@+id/tv_tanggal_pengeluaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih tanggal"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackground"/>
+        </TableRow>
         </TableLayout>
+
+
 
         <!-- BAGIAN SCAN BUKTI -->
         <LinearLayout
@@ -228,6 +235,7 @@
 
         <!-- Tombol Simpan -->
         <TextView
+            android:id="@+id/btn_simpan_pengeluaran"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Simpan Pengeluaran"
@@ -237,8 +245,10 @@
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@color/text_green_dark"
-            android:layout_marginBottom="30dp"/>
-
+            android:layout_marginBottom="30dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground" />
     </LinearLayout>
 
     <!-- 3. NAVIGATION BAR (FIXED) -->

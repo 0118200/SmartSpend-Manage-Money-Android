@@ -17,6 +17,8 @@ import androidx.core.view.WindowInsetsCompat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class pemasukanActivity extends AppCompatActivity {
 
@@ -71,20 +73,65 @@ public class pemasukanActivity extends AppCompatActivity {
 
         datePickerDialog.show();
     }
-
     private void simpanPemasukan() {
-        String jumlah = editJumlah.getText().toString().trim();
-        String danaDarurat = editDanaDarurat.getText().toString().trim();
+        String jumlahStr = editJumlah.getText().toString().trim();
+        String danaStr = editDanaDarurat.getText().toString().trim();
 
-        if (jumlah.isEmpty() || danaDarurat.isEmpty() || selectedDate.isEmpty()) {
+        if (jumlahStr.isEmpty() || danaStr.isEmpty() || selectedDate.isEmpty()) {
             Toast.makeText(this, "Semua field harus diisi!", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // TODO: Simpan ke database / SharedPreferences
-        Toast.makeText(this, "Pemasukan disimpan!\nJumlah: " + jumlah + "\nTanggal: " + selectedDate, Toast.LENGTH_LONG).show();
+        // Parsing jumlah pemasukan
+        double jumlah = 0;
+        try {
+            jumlah = Double.parseDouble(jumlahStr);
+            if (jumlah <= 0) {
+                Toast.makeText(this, "Jumlah pemasukan harus lebih dari 0!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Masukkan jumlah pemasukan yang valid!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // Kembali ke halaman sebelumnya setelah simpan
+        // Parsing dana darurat (nominal langsung, bukan persentase)
+        double danaDarurat = 0;
+        try {
+            danaDarurat = Double.parseDouble(danaStr);
+            if (danaDarurat < 0) {
+                Toast.makeText(this, "Dana darurat tidak boleh negatif!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            if (danaDarurat > jumlah) {
+                Toast.makeText(this, "Dana darurat tidak boleh melebihi pemasukan!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        } catch (NumberFormatException e) {
+            Toast.makeText(this, "Masukkan nominal dana darurat yang valid!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // 💾 SIMPAN KE SHARED PREFERENCES
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putFloat("jumlah_pemasukan", (float) jumlah);
+        editor.putFloat("dana_darurat_nominal", (float) danaDarurat); // simpan nominal langsung
+        editor.putString("tanggal_input", selectedDate);
+
+        editor.apply();
+
+        Toast.makeText(this,
+                "Pemasukan disimpan!\nTotal: " + formatCurrency(jumlah) +
+                        "\nDana Darurat: " + formatCurrency(danaDarurat) +
+                        "\nTanggal: " + selectedDate,
+                Toast.LENGTH_LONG).show();
+
         finish();
+    }
+
+    private String formatCurrency(double amount) {
+        return "Rp. " + String.format("%,.0f", amount).replace(",", ".");
     }
 }

@@ -128,8 +128,9 @@
                                 android:textSize="15sp"/>
                             <TextView
                                 android:layout_width="wrap_content"
+                                android:id="@+id/tv_saldo_bulan_ini"
                                 android:layout_height="wrap_content"
-                                android:text="Rp. 360.000"
+                                android:text="Rp. 0"
                                 android:textStyle="bold"
                                 android:textSize="22sp"
                                 android:textColor="@color/black"
@@ -137,8 +138,9 @@
                                 android:layout_marginBottom="10dp"/>
                             <TextView
                                 android:layout_width="wrap_content"
+                                android:id="@+id/tv_tanggal_saldo"
                                 android:layout_height="wrap_content"
-                                android:text="Minggu, 12 Oktober 2025"
+                                android:text="Belum ada data"
                                 android:textSize="10sp"
                                 android:textColor="#90000000"/>
                         </LinearLayout>
@@ -159,12 +161,12 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="+"
+                                android:id="@+id/btn_add_pemasukan"
                                 android:textSize="36sp"
                                 android:textColor="@color/white"
                                 android:textStyle="bold"
                                 android:layout_marginTop="-5dp"/>
                             <TextView
-                                android:id="@+id/btn_add_pemasukan"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Pemasukan"
@@ -209,8 +211,9 @@
                                 android:textSize="15sp"/>
                             <TextView
                                 android:layout_width="wrap_content"
+                                android:id="@+id/tv_dana_darurat"
                                 android:layout_height="wrap_content"
-                                android:text="Rp. 200.000"
+                                android:text="Rp. 0"
                                 android:textColor="#FF8A80"
                                 android:textStyle="bold"
                                 android:textSize="18sp"
@@ -220,9 +223,11 @@
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="90dp"
+                        android:id="@+id/btn_add_pengeluaran"
                         android:layout_height="90dp"
                         app:cardCornerRadius="30dp"
                         app:cardElevation="4dp"
+                        android:foreground="?android:attr/selectableItemBackground"
                         app:cardBackgroundColor="@color/warna_tombol">
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -274,27 +279,57 @@
                 android:orientation="vertical"
                 android:paddingHorizontal="30dp"
                 android:paddingTop="10dp">
+
+                <!-- Hari ke X dari 30 -->
                 <TextView
+                    android:id="@+id/tv_hari_ke"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hari ke 12 dari 30 hari"
                     android:layout_marginBottom="12dp"
                     android:textSize="14sp"
                     android:textColor="@color/black"/>
+
+                <!-- Budget -->
                 <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:gravity="center_vertical">
                     <View android:layout_width="8dp" android:layout_height="8dp" android:background="@android:drawable/radiobutton_off_background" android:backgroundTint="@color/text_grey" android:layout_marginEnd="10dp"/>
                     <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="Budget" android:textColor="@color/text_grey"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": Rp. 50.000" android:textStyle="bold" android:fontFamily="monospace" android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/tv_budget_harian"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. 0"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
+
+                <!-- Terpakai -->
                 <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8dp" android:gravity="center_vertical">
                     <View android:layout_width="8dp" android:layout_height="8dp" android:background="@android:drawable/radiobutton_off_background" android:backgroundTint="@color/text_grey" android:layout_marginEnd="10dp"/>
                     <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="Terpakai" android:textColor="@color/text_grey"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": Rp. 40.000" android:textStyle="bold" android:fontFamily="monospace" android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/tv_terpakai"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. 0"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
+
+                <!-- Sisa -->
                 <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="5dp" android:gravity="center_vertical">
                     <View android:layout_width="8dp" android:layout_height="8dp" android:background="@android:drawable/radiobutton_off_background" android:backgroundTint="@color/text_grey" android:layout_marginEnd="10dp"/>
                     <TextView android:layout_width="80dp" android:layout_height="wrap_content" android:text="Sisa" android:textColor="@color/text_grey"/>
-                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text=": Rp. 10.000" android:textStyle="bold" android:fontFamily="monospace" android:textColor="@color/black"/>
+                    <TextView
+                        android:id="@+id/tv_sisa_budget"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Rp. 0"
+                        android:textStyle="bold"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/black"/>
                 </LinearLayout>
             </LinearLayout>
 
@@ -318,6 +353,7 @@
                     android:textColor="@color/black"/>
             </androidx.cardview.widget.CardView>
 
+            <!-- List Item 1 -->
             <!-- List Item 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -349,9 +385,10 @@
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/tv_kategori_makanan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp. 10.000"
+                    android:text="Rp. 0"
                     android:fontFamily="monospace"
                     android:textColor="@color/black"/>
             </LinearLayout>
@@ -387,9 +424,10 @@
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/tv_kategori_transportasi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp. 6.000"
+                    android:text="Rp. 0"
                     android:fontFamily="monospace"
                     android:textColor="@color/black"/>
             </LinearLayout>
@@ -425,9 +463,10 @@
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/tv_kategori_belanja"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp. 15.000"
+                    android:text="Rp. 0"
                     android:fontFamily="monospace"
                     android:textColor="@color/black"/>
             </LinearLayout>
@@ -463,9 +502,10 @@
                     android:textSize="16sp"
                     android:textStyle="bold"/>
                 <TextView
+                    android:id="@+id/tv_kategori_hiburan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rp. 9.000"
+                    android:text="Rp. 0"
                     android:fontFamily="monospace"
                     android:textColor="@color/black"/>
             </LinearLayout>

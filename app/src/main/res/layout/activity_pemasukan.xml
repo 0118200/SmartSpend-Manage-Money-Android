@@ -128,7 +128,7 @@
                     app:tint="@color/text_grey"/>
 
                 <TextView
-                    android:text="Alokasi Dana Darurat"
+                    android:text="Dana Darurat (%)"
                     android:textStyle="bold"
                     android:textColor="@color/black"
                     android:textSize="14sp"
@@ -138,8 +138,8 @@
                     android:id="@+id/edit_dana_darurat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Rp. 0"
-                    android:inputType="numberDecimal"
+                    android:hint="0 - 100"
+                    android:inputType="number"
                     android:textSize="14sp"
                     android:background="@drawable/bg_input_title"
                     android:padding="8dp"/>

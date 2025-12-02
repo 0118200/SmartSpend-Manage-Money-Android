@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/main"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_cream">
@@ -72,122 +71,20 @@
         </LinearLayout>
     </RelativeLayout>
 
-    <!-- 2. SCROLL CONTENT (ISI UTAMA) -->
-    <ScrollView
+    <!-- 2. RECYCLER VIEW (ISI DINAMIS - GANTIKAN SCROLLVIEW) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_daily_budget"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:scrollbars="none"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="20dp"
         android:clipToPadding="false"
+        android:scrollbars="none"
         app:layout_constraintTop_toBottomOf="@+id/header_layout"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingTop="15dp"
-            android:paddingBottom="20dp">
-
-            <!-- ITEM 1 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="15dp">
-                <!-- PENGGUNAAN MATERIAL CARD VIEW AGAR BORDER MUNCUL -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:cardCornerRadius="15dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="@color/border_grey"
-                    app:strokeWidth="2dp"
-                    android:layout_marginEnd="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/daily_item_header" android:text="Hari ke 1 : 1 Oktober 2025" android:paddingHorizontal="15dp" android:paddingVertical="8dp" android:textSize="11sp" android:textColor="@color/black"/>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:text="Budget : Rp.50.000\nReal   : Rp.50.000" android:fontFamily="monospace" android:paddingHorizontal="15dp" android:paddingVertical="10dp" android:textSize="11sp" android:textColor="@color/black"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_cross_red" app:cardElevation="0dp" app:strokeWidth="0dp" android:layout_marginEnd="8dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" android:src="@android:drawable/ic_delete" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_check_green" app:cardElevation="0dp" app:strokeWidth="0dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" android:src="@android:drawable/checkbox_on_background" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- ITEM 2 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="15dp">
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:cardCornerRadius="15dp" app:cardElevation="0dp" app:strokeColor="@color/border_grey" app:strokeWidth="2dp" android:layout_marginEnd="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/daily_item_header" android:text="Hari ke 2 : 2 Oktober 2025" android:paddingHorizontal="15dp" android:paddingVertical="8dp" android:textSize="11sp" android:textColor="@color/black"/>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:text="Budget : Rp.50.000\nReal   : Rp.55.000" android:fontFamily="monospace" android:paddingHorizontal="15dp" android:paddingVertical="10dp" android:textSize="11sp" android:textColor="@color/black"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_cross_red" app:cardElevation="0dp" app:strokeWidth="0dp" android:layout_marginEnd="8dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" android:src="@android:drawable/ic_delete" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_check_green" app:cardElevation="0dp" app:strokeWidth="0dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" android:src="@android:drawable/checkbox_on_background" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- ITEM 3 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="15dp">
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:cardCornerRadius="15dp" app:cardElevation="0dp" app:strokeColor="@color/border_grey" app:strokeWidth="2dp" android:layout_marginEnd="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/daily_item_header" android:text="Hari ke 3 : 3 Oktober 2025" android:paddingHorizontal="15dp" android:paddingVertical="8dp" android:textSize="11sp" android:textColor="@color/black"/>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:text="Budget : Rp.50.000\nReal   : Rp.50.000" android:fontFamily="monospace" android:paddingHorizontal="15dp" android:paddingVertical="10dp" android:textSize="11sp" android:textColor="@color/black"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_cross_red" app:cardElevation="0dp" app:strokeWidth="0dp" android:layout_marginEnd="8dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" android:src="@android:drawable/ic_delete" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_check_green" app:cardElevation="0dp" app:strokeWidth="0dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" android:src="@android:drawable/checkbox_on_background" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- ITEM 4 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="15dp">
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:cardCornerRadius="15dp" app:cardElevation="0dp" app:strokeColor="@color/border_grey" app:strokeWidth="2dp" android:layout_marginEnd="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/daily_item_header" android:text="Hari ke 4 : 4 Oktober 2025" android:paddingHorizontal="15dp" android:paddingVertical="8dp" android:textSize="11sp" android:textColor="@color/black"/>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:text="Budget : Rp.50.000\nReal   : Rp.45.000" android:fontFamily="monospace" android:paddingHorizontal="15dp" android:paddingVertical="10dp" android:textSize="11sp" android:textColor="@color/black"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_cross_red" app:cardElevation="0dp" app:strokeWidth="0dp" android:layout_marginEnd="8dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" android:src="@android:drawable/ic_delete" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_check_green" app:cardElevation="0dp" app:strokeWidth="0dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" android:src="@android:drawable/checkbox_on_background" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- ITEM 5 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="15dp">
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:cardCornerRadius="15dp" app:cardElevation="0dp" app:strokeColor="@color/border_grey" app:strokeWidth="2dp" android:layout_marginEnd="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/daily_item_header" android:text="Hari ke 5 : 5 Oktober 2025" android:paddingHorizontal="15dp" android:paddingVertical="8dp" android:textSize="11sp" android:textColor="@color/black"/>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:text="Budget : Rp.50.000\nReal   : Rp.40.000" android:fontFamily="monospace" android:paddingHorizontal="15dp" android:paddingVertical="10dp" android:textSize="11sp" android:textColor="@color/black"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_cross_red" app:cardElevation="0dp" app:strokeWidth="0dp" android:layout_marginEnd="8dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" android:src="@android:drawable/ic_delete" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_check_green" app:cardElevation="0dp" app:strokeWidth="0dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" android:src="@android:drawable/checkbox_on_background" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- ITEM 6 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="15dp">
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:cardCornerRadius="15dp" app:cardElevation="0dp" app:strokeColor="@color/border_grey" app:strokeWidth="2dp" android:layout_marginEnd="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/daily_item_header" android:text="Hari ke 6 : 6 Oktober 2025" android:paddingHorizontal="15dp" android:paddingVertical="8dp" android:textSize="11sp" android:textColor="@color/black"/>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:text="Budget : Rp.50.000\nReal   : Rp.60.000" android:fontFamily="monospace" android:paddingHorizontal="15dp" android:paddingVertical="10dp" android:textSize="11sp" android:textColor="@color/black"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_cross_red" app:cardElevation="0dp" app:strokeWidth="0dp" android:layout_marginEnd="8dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" android:src="@android:drawable/ic_delete" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_check_green" app:cardElevation="0dp" app:strokeWidth="0dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" android:src="@android:drawable/checkbox_on_background" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <!-- ITEM 7 -->
-            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:layout_marginBottom="15dp">
-                <com.google.android.material.card.MaterialCardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" app:cardCornerRadius="15dp" app:cardElevation="0dp" app:strokeColor="@color/border_grey" app:strokeWidth="2dp" android:layout_marginEnd="10dp">
-                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/daily_item_header" android:text="Hari ke 7 : 7 Oktober 2025" android:paddingHorizontal="15dp" android:paddingVertical="8dp" android:textSize="11sp" android:textColor="@color/black"/>
-                        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:background="@color/white" android:text="Budget : Rp.50.000\nReal   : Rp.50.000" android:fontFamily="monospace" android:paddingHorizontal="15dp" android:paddingVertical="10dp" android:textSize="11sp" android:textColor="@color/black"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_cross_red" app:cardElevation="0dp" app:strokeWidth="0dp" android:layout_marginEnd="8dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="10dp" android:src="@android:drawable/ic_delete" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView android:layout_width="45dp" android:layout_height="45dp" app:cardCornerRadius="10dp" app:cardBackgroundColor="@color/btn_check_green" app:cardElevation="0dp" app:strokeWidth="0dp"> <ImageView android:layout_width="match_parent" android:layout_height="match_parent" android:padding="8dp" android:src="@android:drawable/checkbox_on_background" app:tint="@color/white"/> </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation" />
 
     <!-- 3. NAVIGATION BAR (FIXED & SEJAJAR) -->
-    <!-- Semua item menggunakan ukuran icon 24dp dan teks 10sp agar rata -->
     <LinearLayout
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -200,6 +97,7 @@
 
         <!-- Item 1: Home -->
         <LinearLayout
+            android:id="@+id/nav_home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -220,6 +118,7 @@
 
         <!-- Item 2: Daily Budget (AKTIF) -->
         <LinearLayout
+            android:id="@+id/nav_daily_budget"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -241,6 +140,7 @@
 
         <!-- Item 3: Graphic -->
         <LinearLayout
+            android:id="@+id/nav_graphic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -261,6 +161,7 @@
 
         <!-- Item 4: Categories -->
         <LinearLayout
+            android:id="@+id/nav_categories"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

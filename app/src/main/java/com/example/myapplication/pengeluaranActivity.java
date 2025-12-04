@@ -1,10 +1,13 @@
+// app/src/main/java/com/example/myapplication/pengeluaranActivity.java
+
 package com.example.myapplication;
 
+import static com.example.myapplication.utils.KategoriDetector.deteksiKategori;
+
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.content.SharedPreferences;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -14,11 +17,13 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import android.content.SharedPreferences;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.preference.PreferenceManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class pengeluaranActivity extends AppCompatActivity {
@@ -46,7 +51,6 @@ public class pengeluaranActivity extends AppCompatActivity {
         spinnerKategori = findViewById(R.id.spinner_kategori);
         tvTanggal = findViewById(R.id.tv_tanggal_pengeluaran);
         TextView btnSimpan = findViewById(R.id.btn_simpan_pengeluaran);
-        btnSimpan.setOnClickListener(v -> simpanPengeluaran());
 
         // Set tanggal default hari ini
         Calendar now = Calendar.getInstance();
@@ -60,7 +64,6 @@ public class pengeluaranActivity extends AppCompatActivity {
         // Handler simpan
         btnSimpan.setOnClickListener(v -> simpanPengeluaran());
     }
-
 
     private void showDatePicker() {
         Calendar cal = Calendar.getInstance();
@@ -82,7 +85,6 @@ public class pengeluaranActivity extends AppCompatActivity {
     private void simpanPengeluaran() {
         String jumlahStr = editJumlah.getText().toString().trim();
         String deskripsi = editDeskripsi.getText().toString().trim();
-        String kategori = spinnerKategori.getSelectedItem().toString();
 
         if (jumlahStr.isEmpty()) {
             Toast.makeText(this, "Masukkan jumlah pengeluaran!", Toast.LENGTH_SHORT).show();
@@ -105,27 +107,50 @@ public class pengeluaranActivity extends AppCompatActivity {
             return;
         }
 
-        // 💾 UPDATE TOTAL PER KATEGORI DI SHARED PREFERENCES
+        // ✅ Ambil dari spinner — user bisa pilih kategori sendiri
+        String kategoriFinal = spinnerKategori.getSelectedItem().toString();
+        if ("Pilih Kategori".equals(kategoriFinal)) {
+            kategoriFinal = deteksiKategori(deskripsi);
+        }
+
+// Jika user tidak pilih, gunakan otomatis
+        if ("Pilih Kategori".equals(kategoriFinal)) { // ganti "Pilih Kategori" dengan nilai default di spinner
+            kategoriFinal = deteksiKategori(deskripsi);
+        }
+        // Format waktu
+        String tanggalHariIni = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
+        String periodeBulan = new SimpleDateFormat("yyyy-MM", Locale.US).format(new Date());
+
+        // Format timestamp
+        String timestamp = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.US).format(new Date());
+        String key = "transaksi_" + timestamp;
+
+// Simpan ke SharedPreferences (untuk history)
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        SharedPreferences.Editor editor = prefs.edit();
+        prefs.edit()
+                .putString(key + "_judul", "Input Manual")
+                .putString(key + "_deskripsi", deskripsi)
+                .putLong(key + "_jumlah", (long) jumlah)
+                .putString(key + "_kategori", kategoriFinal)
+                .apply();
 
-        // Baca total sebelumnya untuk kategori ini
-        String key = "total_kategori_" + kategori;
-        float totalSebelumnya = prefs.getFloat(key, 0f);
-        float totalBaru = totalSebelumnya + (float) jumlah;
-
-        editor.putFloat(key, totalBaru);
-        editor.apply();
-
-        Toast.makeText(this,
-                "Pengeluaran disimpan!\n" + kategori + ": Rp. " + formatCurrency(jumlah),
-                Toast.LENGTH_SHORT).show();
-
-        finish();
+        Log.d("HISTORY_SAVE", "Data disimpan: " + key);
+        // ✅ Jika mau, simpan juga ke FileHelper (riwayat global)
+        // Transaksi transaksi = new Transaksi("Input Manual", deskripsi, (long) jumlah);
+        // FileHelper.simpanTransaksi(this, transaksi);
+        TransactionManager.recordTransactionWithCategory(this, (long) jumlah, kategoriFinal);
+        Toast.makeText(this, "Pengeluaran disimpan!", Toast.LENGTH_SHORT).show();
+        finish(); // kembali ke homepage → UI akan auto-refresh via onResume()
     }
 
-    // Tambahkan helper format
     private String formatCurrency(double amount) {
         return "Rp. " + String.format("%,.0f", amount).replace(",", ".");
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        // Kembali ke homepage
+        finish();
     }
 }

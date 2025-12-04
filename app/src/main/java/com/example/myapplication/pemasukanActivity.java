@@ -19,6 +19,7 @@ import java.util.Calendar;
 import java.util.Locale;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import com.example.myapplication.homepageActivity;
 
 public class pemasukanActivity extends AppCompatActivity {
 
@@ -119,7 +120,7 @@ public class pemasukanActivity extends AppCompatActivity {
         editor.putFloat("jumlah_pemasukan", (float) jumlah);
         editor.putFloat("dana_darurat_nominal", (float) danaDarurat); // simpan nominal langsung
         editor.putString("tanggal_input", selectedDate);
-
+        editor.putFloat("dana_darurat_sisa", (float) danaDarurat);
         editor.apply();
 
         Toast.makeText(this,
@@ -127,6 +128,8 @@ public class pemasukanActivity extends AppCompatActivity {
                         "\nDana Darurat: " + formatCurrency(danaDarurat) +
                         "\nTanggal: " + selectedDate,
                 Toast.LENGTH_LONG).show();
+
+        FileHelper.initSaldoBulanan(this, (float) jumlah);
 
         finish();
     }

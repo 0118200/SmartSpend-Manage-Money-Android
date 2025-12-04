@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,16 +13,25 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
 
-        <!-- Notification Listener -->
+        <!-- Di dalam <application> -->
         <service
-            android:name=".NotificationListener"
-            android:exported="true"
-            android:label="SmartSpend Budget Tracker"
-            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE">
+            android:name=".Notifikasi"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.service.notification.NotificationListenerService" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".NotificationListener"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.service.notification.NotificationListenerService" />
+            </intent-filter>
+        </service>
+
 
         <!-- ✅ HALAMAN LOGIN (launcher) -->
         <activity
@@ -68,5 +77,7 @@
             android:exported="false" />
 
     </application>
+
+
 
 </manifest>

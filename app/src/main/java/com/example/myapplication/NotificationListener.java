@@ -5,6 +5,8 @@ import android.service.notification.StatusBarNotification;
 import android.util.Log;
 import java.util.regex.Pattern;
 import com.example.myapplication.TransactionManager;
+import com.example.myapplication.utils.KategoriDetector;
+
 import java.util.regex.Matcher;
 
 public class NotificationListener extends NotificationListenerService {
@@ -56,13 +58,18 @@ public class NotificationListener extends NotificationListenerService {
 
         Log.d(TAG, "✅ Paket didukung — lanjut ekstraksi nominal");
         long amount = extractAmount(fullText);
+        // Di dalam onNotificationPosted():
         if (amount > 0) {
             Log.d(TAG, "💰 Nominal terdeteksi: Rp" + amount);
-            TransactionManager.recordTransaction(this, amount);
-            Log.d(TAG, "💾 Disimpan ke realisasi hari ini");
-        } else {
-            Log.w(TAG, "❌ Gagal ekstrak nominal dari teks notifikasi");
+            // ✅ DETEKSI KATEGORI OTOMATIS
+            String kategori = KategoriDetector.deteksiKategori(fullText);
+            TransactionManager.recordTransactionWithCategory(this, amount, kategori);// ✅ kirim deskripsi!
+            Log.d(TAG, "💾 Disimpan ke kategori hari ini");
+            Log.d("NOTIF_DEBUG", "Kategori terdeteksi: " + kategori);
         }
+
+
+
     }
 
     /**

@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;import android.preference.PreferenceManager;
 import android.content.SharedPreferences;  import java.util.prefs.Preferences;
+import com.example.myapplication.TransactionManager;
 
 public class budgetingActivity extends AppCompatActivity {
 
@@ -36,23 +37,26 @@ public class budgetingActivity extends AppCompatActivity {
     private void loadDailyData() {
         Calendar cal = Calendar.getInstance();
         int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH);
+        int month = cal.get(Calendar.MONTH); // Januari = 0, jadi Desember = 11
         int daysInMonth = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
 
-        // Ambil budget harian dari SharedPreferences
         float budgetHarian = calculateDailyBudget();
+        itemList.clear(); // pastikan list kosong dulu
 
-        // Generate item untuk setiap hari
         for (int day = 1; day <= daysInMonth; day++) {
+            // Format tanggal sebagai "yyyy-MM-dd" (misal: "2025-12-03")
+            String tanggal = String.format("%04d-%02d-%02d", year, month + 1, day); // month+1 karena Calendar mulai dari 0
+
+            // Ambil realisasi untuk tanggal ini
+            float realisasi = TransactionManager.getRealizationByDate(this, tanggal);
+
+            // Format label tampilan
             Calendar date = Calendar.getInstance();
             date.set(year, month, day);
             String formattedDate = new SimpleDateFormat("d MMMM yyyy", Locale.getDefault()).format(date.getTime());
             String label = "Hari ke " + day + " : " + formattedDate;
 
-            // ✅ Cukup satu baris ini
-            float real = TransactionManager.getRealizationByDay(this, day);
-
-            itemList.add(new DailyBudgetItem(label, budgetHarian, real));
+            itemList.add(new DailyBudgetItem(label, budgetHarian, realisasi));
         }
 
         adapter.notifyDataSetChanged();
@@ -62,7 +66,13 @@ public class budgetingActivity extends AppCompatActivity {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         float pemasukan = prefs.getFloat("jumlah_pemasukan", 0f);
         float danaDarurat = prefs.getFloat("dana_darurat_nominal", 0f);
-        return (pemasukan - danaDarurat) / 30f;
+        float saldoTersedia = pemasukan - danaDarurat;
+
+        // Jika saldo tersedia negatif, set jadi 0
+        if (saldoTersedia < 0) saldoTersedia = 0;
+
+        // Hitung budget harian — bulatkan ke bawah (floor) agar tidak overbudget
+        return (float) Math.floor(saldoTersedia / 30);
     }
 
     @Override

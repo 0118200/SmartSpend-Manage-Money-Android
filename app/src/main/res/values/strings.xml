@@ -3,7 +3,6 @@
 
     <!-- Tambahkan "Bulan" di urutan pertama -->
     <string-array name="list_bulan">
-        <item>Bulan</item>  <!-- Ini akan jadi default -->
         <item>Januari</item>
         <item>Februari</item>
         <item>Maret</item>
@@ -20,7 +19,6 @@
 
     <!-- Tambahkan "Tahun" di urutan pertama -->
     <string-array name="list_tahun">
-        <item>Tahun</item> <!-- Ini akan jadi default -->
         <item>2025</item>
         <item>2026</item>
         <item>2027</item>
